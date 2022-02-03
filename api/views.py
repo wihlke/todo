@@ -1,10 +1,13 @@
 from rest_framework.viewsets import ModelViewSet
+from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import TodoItemSerializer, TodoSerializer
 from .models import Todo, TodoItem
 
 
 class TodoViewSet(ModelViewSet):
     serializer_class = TodoSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['title']
 
     def get_queryset(self):
         return Todo.objects.filter(created_by_id=self.request.user.id)
