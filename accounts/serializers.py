@@ -1,19 +1,11 @@
 from rest_framework import serializers
 from .models import User
 
-
-class UserRegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(required=True , write_only = True)
-    
-    class Meta:
-        model = User
-        fields = ('email', 'password', 'name')
+from djoser.serializers import UserCreateSerializer
 
 
-class UserSerializer(UserRegisterSerializer):
-    class Meta:
-        model = User
-        fields = [
-             'email', 
-             'password',
-        ]
+class UserSerializer(UserCreateSerializer):
+    class Meta(UserCreateSerializer.Meta):
+        fields = ('id', 'email', 'password', 'name')
+        read_only_fields = ['id']
+
