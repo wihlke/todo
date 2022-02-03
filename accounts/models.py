@@ -23,10 +23,6 @@ class User(AbstractUser):
     password = models.CharField(max_length=255)
     username = None  # replaced by email
 
-    is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_superuser = models.BooleanField(default=False)
-
     objects = UserManager()
 
     @property
