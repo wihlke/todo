@@ -1,8 +1,4 @@
 /.coverage
-/create_todo_header.png
 /db.sqlite3
 /htmlcov
-/Pipfile.lock
-/signup_header.png
-/signup_response.json
 /task.md
