@@ -21,7 +21,7 @@ class TodoItemSerializer(serializers.ModelSerializer):
 
 
 class TodoSerializer(serializers.ModelSerializer):
-    created_by = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    created_by = serializers.PrimaryKeyRelatedField(default=serializers.CurrentUserDefault(), read_only=True)
     items = TodoItemSerializer(many=True, read_only=True)
 
     class Meta:
